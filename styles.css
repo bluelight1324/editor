@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    background: #000080;
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #000080;
+}
+
+.toolbar {
+    padding: 5px;
+    background: #000080;
+    border-bottom: 1px solid #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    color: #ffffff;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    padding: 0 5px;
+    border-right: 1px solid #ffffff;
+}
+
+.toolbar-group:last-child {
+    border-right: none;
+}
+
+.help-bar {
+    background: #000080;
+    color: #ffffff;
+    padding: 5px;
+    border-bottom: 1px solid #ffffff;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shortcut {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.shortcut kbd {
+    background: #ffffff;
+    color: #000080;
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-right: 3px;
+}
+
+.editor-container {
+    display: flex;
+    flex: 1;
+    background: #000080;
+    position: relative;
+    overflow: hidden;
+}
+
+.line-numbers {
+    padding: 5px 10px;
+    background: #000080;
+    color: #ffffff;
+    border-right: 1px solid #ffffff;
+    text-align: right;
+    user-select: none;
+    font-size: 14px;
+    min-width: 50px;
+}
+
+#editor {
+    flex: 1;
+    padding: 5px;
+    outline: none;
+    font-size: 14px;
+    background: #000080;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    overflow-y: auto;
+}
+
+#htmlView {
+    flex: 1;
+    padding: 5px;
+    background: #000080;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+    resize: none;
+    white-space: pre-wrap;
+    display: none;
+}
+
+.toolbar button, .search-bar button {
+    padding: 3px 8px;
+    background: #000080;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.toolbar button:hover, .search-bar button:hover {
+    background: #0000a0;
+}
+
+.toolbar button:active, .search-bar button:active {
+    background: #0000c0;
+}
+
+.toolbar select {
+    padding: 3px 8px;
+    border: 1px solid #ffffff;
+    background: #000080;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+.toolbar input[type="number"] {
+    width: 60px;
+    padding: 3px 8px;
+    border: 1px solid #ffffff;
+    background: #000080;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.toolbar input[type="color"] {
+    width: 30px;
+    height: 25px;
+    padding: 0;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    background: #000080;
+}
+
+.search-bar {
+    padding: 5px;
+    background: #000080;
+    border-bottom: 1px solid #ffffff;
+    display: flex;
+    gap: 5px;
+}
+
+.search-bar input[type="text"] {
+    padding: 3px 8px;
+    border: 1px solid #ffffff;
+    background: #000080;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    flex: 1;
+}
+
+.status-bar {
+    padding: 5px;
+    background: #000080;
+    border-top: 1px solid #ffffff;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Code block styling */
+.code-block {
+    background: #000080;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    margin: 5px 0;
+}
+
+/* Image styles */
+#editor img {
+    max-width: 100%;
+    height: auto;
+    margin: 5px 0;
+    border: 1px solid #ffffff;
+}
+
+/* Active state for buttons */
+.toolbar button.active {
+    background: #0000a0;
+    border-color: #ffffff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .toolbar-group {
+        border-right: none;
+        border-bottom: 1px solid #ffffff;
+        padding: 5px 0;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .help-bar {
+        display: none;
+    }
+}

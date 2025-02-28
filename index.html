@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Text Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+        <div class="help-bar">
+            <div class="shortcuts">
+                <span class="shortcut"><kbd>^K</kbd>Block</span>
+                <span class="shortcut"><kbd>^O</kbd>Onscreen</span>
+                <span class="shortcut"><kbd>^Q</kbd>Quick</span>
+                <span class="shortcut"><kbd>^P</kbd>Print</span>
+                <span class="shortcut"><kbd>^B</kbd>Block</span>
+                <span class="shortcut"><kbd>^F</kbd>Find</span>
+                <span class="shortcut"><kbd>^L</kbd>Find/Replace</span>
+            </div>
+            <div>WordStar-style Editor</div>
+        </div>
+        <div class="toolbar">
+            <div class="toolbar-group">
+                <button onclick="formatText('bold')" title="Bold"><i class="fas fa-bold"></i></button>
+                <button onclick="formatText('italic')" title="Italic"><i class="fas fa-italic"></i></button>
+                <button onclick="formatText('underline')" title="Underline"><i class="fas fa-underline"></i></button>
+            </div>
+
+            <div class="toolbar-group">
+                <select onchange="formatHeading(this.value)">
+                    <option value="">Paragraph</option>
+                    <option value="h1">Heading 1</option>
+                    <option value="h2">Heading 2</option>
+                    <option value="h3">Heading 3</option>
+                </select>
+                <input type="number" min="8" max="72" value="16" onchange="setFontSize(this.value)" title="Font Size">
+                <input type="color" onchange="setFontColor(this.value)" title="Font Color">
+            </div>
+
+            <div class="toolbar-group">
+                <button onclick="setAlignment('left')" title="Align Left"><i class="fas fa-align-left"></i></button>
+                <button onclick="setAlignment('center')" title="Align Center"><i class="fas fa-align-center"></i></button>
+                <button onclick="setAlignment('right')" title="Align Right"><i class="fas fa-align-right"></i></button>
+                <button onclick="setAlignment('justify')" title="Justify"><i class="fas fa-align-justify"></i></button>
+            </div>
+
+            <div class="toolbar-group">
+                <button onclick="formatList('ordered')" title="Ordered List"><i class="fas fa-list-ol"></i></button>
+                <button onclick="formatList('unordered')" title="Unordered List"><i class="fas fa-list-ul"></i></button>
+            </div>
+
+            <div class="toolbar-group">
+                <button onclick="insertLink()" title="Insert Link"><i class="fas fa-link"></i></button>
+                <label class="image-upload">
+                    <i class="fas fa-image"></i>
+                    <input type="file" accept="image/*" onchange="insertImage(this)" style="display:none">
+                </label>
+            </div>
+
+            <div class="toolbar-group">
+                <button onclick="toggleView()" title="Toggle HTML View"><i class="fas fa-code"></i></button>
+            </div>
+            <div class="toolbar-group">
+                <button onclick="loadFile()" title="Load File"><i class="fas fa-folder-open"></i></button>
+                <button onclick="saveFile()" title="Save File"><i class="fas fa-save"></i></button>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Find...">
+            <input type="text" id="replaceInput" placeholder="Replace with...">
+            <button onclick="findText()">Find</button>
+            <button onclick="replaceText()">Replace</button>
+            <button onclick="replaceAllText()">Replace All</button>
+        </div>
+
+        <div class="editor-container">
+            <div class="line-numbers"></div>
+            <div id="editor" contenteditable="true" spellcheck="true"></div>
+            <textarea id="htmlView"></textarea>
+        </div>
+        <div class="status-bar">
+            <div class="position">Line: 1 Col: 1</div>
+            <div class="file-info">No File</div>
+            <div class="mode">INSERT</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>
