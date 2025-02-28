@@ -1,4 +1,4 @@
-# Browser Text Editor
+# Browser Text Editor like WordStar
 
 A simple, lightweight text editor that runs directly in the browser. Built with vanilla JavaScript, HTML, and CSS.
 
